@@ -1,8 +1,13 @@
 
 #thediv{
   position:absolute;
-  width:200px;
+  top:0;
+  width:100%;
   margin:auto;
+  font-size: 2em;
+  font-family: "Comic Sans MS";
+  color:green;
+  padding-top:40px;
   text-align: center;
 }
 
