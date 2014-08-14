@@ -1,0 +1,1 @@
+"Local cookies don't work in Chrome" 
