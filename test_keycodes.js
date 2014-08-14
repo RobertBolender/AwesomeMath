@@ -2,24 +2,22 @@ $(document).ready(function(){
   newGuess();
   $.ionSound({
     sounds: [
-    {
-      name: "cd_tray"
-    },
-    {
-      name: "bell_ring"
-    },
-    {
-      name: "glass"
-    },
-    {
-      name: "metal_plate_2"
-    }
+    {name: "cd_tray"},
+    {name: "bell_ring"},
+    {name: "glass"},
+    {name: "metal_plate"},
+    {name: "metal_plate_2"}
     ],
     volume: 1,
     path: "sounds/",
     preload: true
   });
-  $.ionSound.play("cd_tray");  
+  $.ionSound.play("cd_tray");
+  // createCookie("score", 0, -1);
+  var score = readCookie("score");
+  if (score){
+    $('#thediv').text("Previous score: " + score);
+  }
 });
 
 document.addEventListener("keydown", move, false);
@@ -64,8 +62,17 @@ function subtract(){
 function guess(){
   var guess = $('#entry').text();
   if (guess){
-    $('#thediv').text("Correct!");
-    $.ionSound.play("glass");
+    var factor1 = $('#factor1').text();
+    var factor2 = $('#factor2').text();
+    if (guess == factor1 * factor2){
+      $('#thediv').text("Correct!");
+      $.ionSound.play("glass");
+      var score = readCookie("score") || 0;
+      createCookie("score", +score + 1, 30);
+    } else {
+      $('#thediv').text("Oops!");
+      $.ionSound.play("metal_plate_2");
+    }
     setTimeout(function(){newGuess()}, 500);
   }
 }
