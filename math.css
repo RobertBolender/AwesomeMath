@@ -6,7 +6,10 @@
 }
 
 #factors{
-  width:400px;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  width:500px;
+  height:300px;
   margin: 3em auto;
   font-size: 3em;
   border:1px solid black;
