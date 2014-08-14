@@ -25,7 +25,7 @@ function eraseCookie(name) {
 
 $(document).ready(function(){
   console.log("hello");
-//  eraseCookie("visits");
+ // eraseCookie("visits");
   var visits = readCookie("visits") || 0;
   createCookie("visits", +visits + 1, 30);
   $('div').text(document.cookie);
