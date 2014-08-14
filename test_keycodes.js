@@ -42,7 +42,9 @@ function subtract(){
 function guess(){
   var guess = $('#entry').text();
   $('#entry').text("");
-  newGuess();
+  if (guess){
+    newGuess();
+  }
 }
 
 function newGuess(){
