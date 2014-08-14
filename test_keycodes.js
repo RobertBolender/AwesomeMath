@@ -16,7 +16,7 @@ function move(event){
           subtract();
         }
         if (keyCode < 48 || keyCode > 105 || (keyCode > 57 && keyCode < 96) ){return 0;}
-        $('#thediv').text("You pressed: " + keyCode);
+        // $('#thediv').text("You pressed: " + keyCode);
          if (keyCode == 48 || keyCode == 96){add(0)} //0
     else if (keyCode == 49 || keyCode == 97){add(1)} //1
     else if (keyCode == 50 || keyCode == 98){add(2)} //2
@@ -41,13 +41,14 @@ function subtract(){
 
 function guess(){
   var guess = $('#entry').text();
-  $('#entry').text("");
   if (guess){
-    newGuess();
+    $('#thediv').text("Correct!");
+    setTimeout(function(){newGuess()}, 500);
   }
 }
 
 function newGuess(){
+  $('#entry, #thediv').text("");
   var one = Math.floor(Math.random() * 5 + 1);
   $('#factor1').text(one);
   var two = Math.floor(Math.random() * 5 + 1);
