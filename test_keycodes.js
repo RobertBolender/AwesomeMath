@@ -1,3 +1,8 @@
+$(document).ready(function(){
+  newGuess();
+
+});
+
 document.addEventListener("keydown", move, false);
 function move(event){
   event = event || window.event; // This fixes problems in Firefox. Don't touch.
