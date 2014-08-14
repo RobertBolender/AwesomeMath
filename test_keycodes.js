@@ -1,6 +1,25 @@
 $(document).ready(function(){
   newGuess();
-
+  $.ionSound({
+    sounds: [
+    {
+      name: "cd_tray"
+    },
+    {
+      name: "bell_ring"
+    },
+    {
+      name: "glass"
+    },
+    {
+      name: "metal_plate_2"
+    }
+    ],
+    volume: 1,
+    path: "sounds/",
+    preload: true
+  });
+  $.ionSound.play("cd_tray");  
 });
 
 document.addEventListener("keydown", move, false);
@@ -43,6 +62,7 @@ function guess(){
   var guess = $('#entry').text();
   if (guess){
     $('#thediv').text("Correct!");
+    $.ionSound.play("glass");
     setTimeout(function(){newGuess()}, 500);
   }
 }
