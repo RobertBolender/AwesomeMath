@@ -50,6 +50,9 @@ function move(event){
 
 function add(digit){
   var text = $('#entry').text();
+  if (0+text > 99){
+    return;
+  }
   $('#entry').text(text + digit);
 }
 function subtract(){
