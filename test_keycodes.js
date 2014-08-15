@@ -84,10 +84,9 @@ function guess(){
     if (guess == factor1 * factor2){
       var score = readCookie("score") || 0;
       createCookie("score", +score + 1, 30);
-      addPoints(15);
+      addPoints(10);
     } else {
-      $('#thediv').text("Oops!");
-      $.ionSound.play("metal_plate_2");
+      subtractPoints(20);
     }
     setTimeout(function(){newGuess()}, 500);
   }
@@ -113,6 +112,22 @@ function addPoints(points){
     $('#thediv').text("Awesome!");
     $.ionSound.play("bell_ring");
     $('#progress').width(currentpoints + points - 100 + "%");
+  }
+  console.log(currentpoints + points);
+}
+
+function subtractPoints(points){
+  $('#awesomebar').css({opacity:100});
+  var currentpoints = $('#progress').width() / $('#awesomebar').width() * 100;
+
+  if (currentpoints - points < 0){
+    $('#thediv').text("Oh no!");
+    $.ionSound.play("metal_plate");
+    $('#progress').width(0);
+  } else {
+    $('#thediv').text("Oops!");
+    $.ionSound.play("metal_plate_2");
+    $('#progress').width(currentpoints - points + "%");
   }
   console.log(currentpoints + points);
 }
