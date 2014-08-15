@@ -1,13 +1,22 @@
+#awesomebar{
+  width:400px;
+  height:20px;
+  margin:auto;
+  /*position:absolute;*/
+  /*top:0;*/
+  /*left:400px;*/
+  border:1px solid black;
+  border-radius:20px;
+}
 
 #thediv{
   position:absolute;
-  top:0;
+  top:40px;
   width:100%;
   margin:auto;
   font-size: 2em;
   font-family: "Comic Sans MS";
   color:green;
-  padding-top:40px;
   text-align: center;
 }
 
