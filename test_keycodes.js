@@ -18,7 +18,22 @@ $(document).ready(function(){
   if (score){
     $('#thediv').text("Previous score: " + score);
   }
+
+  $('#footer').mouseover(function(){showFooter()});
+  $('#footer').click(function(){resetAll()});
 });
+
+function resetAll(){
+  console.log("Resetting everything.");
+  createCookie("visits", 0, -1);
+  createCookie("score", 0, -1);
+}
+
+function showFooter(){
+  // $('#footer').animate("opacity", "100");
+  console.log("mousing over!");
+  $('#footer').animate({opacity: 100}, 4000);
+}
 
 document.addEventListener("keydown", move, false);
 function move(event){
