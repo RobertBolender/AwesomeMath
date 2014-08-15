@@ -21,6 +21,8 @@ $(document).ready(function(){
 
   $('#footer').mouseover(function(){showFooter()});
   $('#footer').click(function(){resetAll()});
+
+  // $('#progress').width("10%");
 });
 
 function resetAll(){
@@ -80,10 +82,9 @@ function guess(){
     var factor1 = $('#factor1').text();
     var factor2 = $('#factor2').text();
     if (guess == factor1 * factor2){
-      $('#thediv').text("Correct!");
-      $.ionSound.play("glass");
       var score = readCookie("score") || 0;
       createCookie("score", +score + 1, 30);
+      addPoints(15);
     } else {
       $('#thediv').text("Oops!");
       $.ionSound.play("metal_plate_2");
@@ -98,4 +99,20 @@ function newGuess(){
   $('#factor1').text(one);
   var two = Math.floor(Math.random() * 5 + 1);
   $('#factor2').text(two);
+}
+
+function addPoints(points){
+  $('#awesomebar').css({opacity:100});
+  var currentpoints = $('#progress').width() / $('#awesomebar').width() * 100;
+
+  if (currentpoints + points < 100){
+    $('#thediv').text("Correct!");
+    $.ionSound.play("glass");
+    $('#progress').width(currentpoints + points + "%");
+  } else {
+    $('#thediv').text("Awesome!");
+    $.ionSound.play("bell_ring");
+    $('#progress').width(currentpoints + points - 100 + "%");
+  }
+  console.log(currentpoints + points);
 }
