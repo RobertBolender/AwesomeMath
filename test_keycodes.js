@@ -1,3 +1,11 @@
+var score = readCookie("score");
+  if (score){
+    console.log("found a cookie");
+    // $('#thediv').text("Previous score: " + score);
+  } else {
+    console.log("didn't find a score cookie");
+  }
+
 $(document).ready(function(){
   newGuess();
   $.ionSound({
@@ -13,16 +21,13 @@ $(document).ready(function(){
     preload: true
   });
   $.ionSound.play("cd_tray");
-  // createCookie("score", 0, -1);
-  var score = readCookie("score");
-  if (score){
-    $('#thediv').text("Previous score: " + score);
-  }
-
   $('#footer').mouseover(function(){showFooter()});
   $('#footer').click(function(){resetAll()});
 
   // $('#progress').width("10%");
+  // $('#factors').hide();
+  $('#blackboard').hide();
+  $('#blackboard').text("Please write your name on the blackboard to begin");
 });
 
 function resetAll(){
