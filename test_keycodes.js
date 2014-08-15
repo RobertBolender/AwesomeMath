@@ -22,10 +22,10 @@ $(document).ready(function(){
 
 document.addEventListener("keydown", move, false);
 function move(event){
-  // event = event || window.event; // This fixes problems in Firefox. Don't touch.
+  event = event || window.event; // This fixes problems in Firefox. Don't touch.
   var e = event;
         var keyCode = e.keyCode;
-        console.log(keyCode);
+        // console.log(keyCode);
         if (keyCode == 13){
           // console.log("enter!");
           guess();
