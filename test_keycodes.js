@@ -94,9 +94,9 @@ function guess(){
 
 function newGuess(){
   $('#entry, #thediv').text("");
-  var one = Math.floor(Math.random() * 5 + 1);
+  var one = Math.floor(Math.random() * 10 + 1);
   $('#factor1').text(one);
-  var two = Math.floor(Math.random() * 5 + 1);
+  var two = Math.floor(Math.random() * 10 + 1);
   $('#factor2').text(two);
 }
 
