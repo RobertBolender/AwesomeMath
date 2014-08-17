@@ -46,11 +46,17 @@ function signIn(){
 
 function selectLevel(){
   //NYF
-  var level = prompt("What level would you like to play?", 1);
-  currentLevel = level || 1;
-  playerLives = 0;
-  addLife(3);
-  gameLoop();
+  $('#levels').css({opacity:100});
+  $('#levels div').click(function(){currentLevel = $(this).data("level");selectLevel()});
+  // console.log("current level: " + currentLevel);
+  // var level = prompt("What level would you like to play?", 1);
+  // currentLevel = level || 1;
+  if (currentLevel){
+    $('#levels').css({opacity:0});
+    playerLives = 0;
+    addLife(3);
+    gameLoop();
+  }
 }
 
 function endLevel(){
