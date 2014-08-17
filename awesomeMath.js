@@ -1,9 +1,11 @@
 var currentLevel = 0;
 var currentPlayer = "";
 var playerLives = 0;
+var lastPlayer = "";
 
 $(document).ready(function(){
   // createCookie("score", 0, -1);
+  lastPlayer = readCookie("lastPlayer") || "";
   var score = readCookie("score");
   if (score){
     $('#thediv').text("Previous score: " + score);
@@ -36,7 +38,6 @@ function gameLoop(){
 
 function signIn(){
   //NYF
-  var lastPlayer = readCookie("lastPlayer") || "";
   var name = prompt("What is your name?", lastPlayer);
   currentPlayer = name || "Nameless";
   $('#player').text(currentPlayer);
