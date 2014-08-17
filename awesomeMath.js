@@ -4,6 +4,7 @@ var playerLives = 0;
 var playerStars = 0;
 var lastPlayer = "";
 var highScores = "";
+var showingScores = 0;
 
 $(document).ready(function(){
   lastPlayer = readCookie("lastPlayer") || "";
@@ -20,6 +21,7 @@ $(document).ready(function(){
 });
 
 function gameLoop(){
+  if(showingScores){return;}
   if (!currentPlayer){
     console.log("No player");
     return signIn();
@@ -48,7 +50,10 @@ function signIn(){
 function selectLevel(){
   //NYF
   $('#levels').css({opacity:100});
-  $('#levels div').click(function(){currentLevel = $(this).data("level");selectLevel()});
+  $('#levels div').click(function(){
+    currentLevel = $(this).data("level");
+    selectLevel()
+  });
   // console.log("current level: " + currentLevel);
   // var level = prompt("What level would you like to play?", 1);
   // currentLevel = level || 1;
@@ -63,7 +68,23 @@ function selectLevel(){
 function endLevel(){
   //NYF
   $('#question').css({opacity:0});
-  currentLevel = 0;
+  // currentLevel = 0;
+  $('#stars').text("");
+  if (playerStars){
+    showingScores = 1;
+    $('#scores').css({opacity:100});
+    $('#scores').text("Congratulations, you got " + playerStars + ((playerStars > 1)? " stars!": " star!"));
+    setTimeout(function(){
+      $('#scores').css({opacity:0});
+      currentLevel = 0;
+      playerStars = 0;
+      showingScores = 0;
+      gameLoop();
+    }, 2000);
+  } else {
+    currentLevel = 0;
+    gameLoop();
+  }
 }
 
 function addLife(number){
@@ -82,6 +103,7 @@ function addStar(number){
 //////////////////////////////
 // Functions for math questions
   function move(event){
+    if(currentLevel <= 0 || playerLives <= 0){return;}
     event = event || window.event; // This fixes problems in Firefox. Don't touch.
     var e = event;
           var keyCode = e.keyCode;

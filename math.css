@@ -99,3 +99,9 @@
   background-color:white;
   color:black;
 }
+
+#scores {
+  opacity:0;
+  position:absolute;
+  background-color:blue;
+}
