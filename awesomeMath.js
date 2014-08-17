@@ -3,20 +3,6 @@ var currentPlayer = "";
 var playerLives = 0;
 
 $(document).ready(function(){
-  // newGuess();
-  $.ionSound({
-    sounds: [
-    {name: "cd_tray"},
-    {name: "bell_ring"},
-    {name: "glass"},
-    {name: "metal_plate"},
-    {name: "metal_plate_2"}
-    ],
-    volume: 1,
-    path: "sounds/",
-    preload: true
-  });
-  $.ionSound.play("cd_tray");
   // createCookie("score", 0, -1);
   var score = readCookie("score");
   if (score){
@@ -28,6 +14,7 @@ $(document).ready(function(){
   $('#footer').click(function(){resetAll()});
 
   // $('#progress').width("10%");
+  initSound();
   gameLoop();
 });
 
@@ -218,6 +205,22 @@ function resetAll(){
 function showFooter(){
   console.log("mousing over!");
   $('#footer').animate({opacity: 100}, 4000);
+}
+
+function initSound(){
+  $.ionSound({
+    sounds: [
+    {name: "cd_tray"},
+    {name: "bell_ring"},
+    {name: "glass"},
+    {name: "metal_plate"},
+    {name: "metal_plate_2"}
+    ],
+    volume: 1,
+    path: "sounds/",
+    preload: true
+  });
+  $.ionSound.play("cd_tray");
 }
 //////////////////////////////
 
