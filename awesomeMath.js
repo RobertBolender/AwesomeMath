@@ -1,4 +1,5 @@
-document.addEventListener("keydown", move, false);
+var currentLevel = 0;
+var currentPlayer = "";
 
 $(document).ready(function(){
   // newGuess();
@@ -21,6 +22,7 @@ $(document).ready(function(){
     $('#thediv').text("Previous score: " + score);
   }
 
+  $(document).on("keydown", function(){move();});
   $('#footer').mouseover(function(){showFooter()});
   $('#footer').click(function(){resetAll()});
 
@@ -30,10 +32,13 @@ $(document).ready(function(){
 
 function gameLoop(){
   if (!currentPlayer){
+    console.log("No player");
     return signIn();
   } else if (!currentLevel){
+    console.log("No level");
     return selectLevel();
   } else if (!playerLives){
+    console.log("No life");
     return endLevel();
   }
 }
@@ -107,7 +112,9 @@ function endLevel(){
   }
 
   function newGuess(){
+    if (!currentLevel){return;}
     $('#entry, #thediv').text("");
+    $('#question').css({opacity:100});
     var one = Math.floor(Math.random() * 10 + 1);
     $('#factor1').text(one);
     var two = Math.floor(Math.random() * 10 + 1);
