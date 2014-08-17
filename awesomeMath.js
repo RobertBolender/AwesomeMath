@@ -72,7 +72,10 @@ function endLevel(){
   $('#stars').text("");
   if (playerStars){
     showingScores = 1;
-    $.ionSound.play("awesome_song");
+    if (playerStars > 0){
+      $.ionSound.play("awesome_song");
+      $('#mute').css({opacity:100});
+    }
     $('#scores').css({opacity:100});
     $('#scores').text("Congratulations, you got " + playerStars + ((playerStars > 1)? " stars!": " star!"));
     setTimeout(function(){
@@ -300,6 +303,7 @@ function initSound(){
     preload: true
   });
   $.ionSound.play("cd_tray");
+  $('#mute').click(function(){$.ionSound.stop()});
 }
 //////////////////////////////
 
