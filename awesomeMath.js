@@ -36,8 +36,10 @@ function gameLoop(){
 
 function signIn(){
   //NYF
-  var name = prompt("What is your name?", "Nameless");
+  var lastPlayer = readCookie("lastPlayer") || "";
+  var name = prompt("What is your name?", lastPlayer);
   currentPlayer = name || "Nameless";
+  createCookie("lastPlayer", currentPlayer, 7);
   gameLoop();
 }
 
