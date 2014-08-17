@@ -36,14 +36,14 @@ function gameLoop(){
 
 function signIn(){
   //NYF
-  var name = prompt("What is your name?");
+  var name = prompt("What is your name?", "Nameless");
   currentPlayer = name || "Nameless";
   gameLoop();
 }
 
 function selectLevel(){
   //NYF
-  var level = prompt("What level would you like to play?");
+  var level = prompt("What level would you like to play?", 1);
   currentLevel = level || 1;
   playerLives = 0;
   addLife(3);
