@@ -89,7 +89,7 @@
 #levels span {
   display:block;
   text-align: center;
-  margin:auto;
+  margin:0.5em auto;
 }
 
 #levels div {
