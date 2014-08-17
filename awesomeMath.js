@@ -50,20 +50,31 @@ function gameLoop(){
 function signIn(){
   //NYF
   var name = prompt("What is your name?");
-  currentPlayer = name;
+  currentPlayer = name || "Nameless";
   gameLoop();
 }
 
 function selectLevel(){
-  //NYI
+  //NYF
   var level = prompt("What level would you like to play?");
-  currentLevel = level;
-  playerLives = 3;
+  currentLevel = level || 1;
+  playerLives = 0;
+  addLife(3);
   gameLoop();
 }
 
 function endLevel(){
-  //NYI
+  //NYF
+  $('#question').css({opacity:0});
+  currentLevel = 0;
+}
+
+function addLife(number){
+  playerLives += number;
+  if (playerLives <= 0){
+    endLevel();
+  }
+  $('#lives').text(playerLives);
 }
 
 //////////////////////////////
@@ -118,7 +129,7 @@ function endLevel(){
       } else {
         subtractPoints(20);
       }
-      setTimeout(function(){newGuess()}, 500);
+      setTimeout(function(){gameLoop()}, 500);
     }
   }
 
@@ -156,6 +167,7 @@ function endLevel(){
       $('#thediv').text("Oh no!");
       $.ionSound.play("metal_plate");
       $('#progress').width(0);
+      addLife(-1);
     } else {
       $('#thediv').text("Oops!");
       $.ionSound.play("metal_plate_2");
