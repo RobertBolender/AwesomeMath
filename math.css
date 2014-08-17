@@ -69,3 +69,10 @@
   bottom:0;
   opacity:0;
 }
+
+#player {
+  position:absolute;
+  top:0;
+  left:0;
+  padding:10px;
+}

@@ -39,6 +39,8 @@ function signIn(){
   var lastPlayer = readCookie("lastPlayer") || "";
   var name = prompt("What is your name?", lastPlayer);
   currentPlayer = name || "Nameless";
+  $('#player').text(currentPlayer);
+  $('#player').click(signIn);
   createCookie("lastPlayer", currentPlayer, 7);
   gameLoop();
 }
