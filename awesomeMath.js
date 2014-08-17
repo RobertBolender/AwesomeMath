@@ -1,6 +1,7 @@
 var currentLevel = 0;
 var currentPlayer = "";
 var playerLives = 0;
+var playerStars = 0;
 var lastPlayer = "";
 var highScores = "";
 
@@ -70,7 +71,12 @@ function addLife(number){
   if (playerLives <= 0){
     endLevel();
   }
-  $('#lives').text(playerLives);
+  $('#lives').text(playerLives + " lives");
+}
+
+function addStar(number){
+  playerStars += number;
+  $('#stars').text(playerStars + " stars");
 }
 
 //////////////////////////////
@@ -189,6 +195,7 @@ function addLife(number){
       $('#thediv').text("Awesome!");
       $.ionSound.play("bell_ring");
       $('#progress').width(currentpoints + points - 100 + "%");
+      addStar(1);
     }
     console.log(currentpoints + points);
   }
