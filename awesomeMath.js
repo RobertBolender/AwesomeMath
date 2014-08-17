@@ -149,6 +149,7 @@ function addStar(number){
       if (guess == factor1 * factor2){
         addPoints(10);
       } else {
+        $('#entry').text(factor1 * factor2);
         subtractPoints(20);
       }
       setTimeout(function(){gameLoop()}, 500);
