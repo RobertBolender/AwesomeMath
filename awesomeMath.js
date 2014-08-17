@@ -2,14 +2,12 @@ var currentLevel = 0;
 var currentPlayer = "";
 var playerLives = 0;
 var lastPlayer = "";
+var highScores = "";
 
 $(document).ready(function(){
-  // createCookie("score", 0, -1);
   lastPlayer = readCookie("lastPlayer") || "";
-  var score = readCookie("score");
-  if (score){
-    $('#thediv').text("Previous score: " + score);
-  }
+  highScores = readCookie("highScores") || "";
+
 
   $(document).keydown(function(event){move(event);});
   $('#footer').mouseover(function(){showFooter()});
@@ -115,8 +113,6 @@ function addLife(number){
       var factor1 = $('#factor1').text();
       var factor2 = $('#factor2').text();
       if (guess == factor1 * factor2){
-        var score = readCookie("score") || 0;
-        createCookie("score", +score + 1, 30);
         addPoints(10);
       } else {
         subtractPoints(20);
