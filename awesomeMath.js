@@ -1,5 +1,6 @@
 var currentLevel = 0;
 var currentPlayer = "";
+var playerLives = 0;
 
 $(document).ready(function(){
   // newGuess();
@@ -40,15 +41,25 @@ function gameLoop(){
   } else if (!playerLives){
     console.log("No life");
     return endLevel();
+  } else {
+    console.log("Time for a question!");
+    return newGuess();
   }
 }
 
 function signIn(){
-  //NYI
+  //NYF
+  var name = prompt("What is your name?");
+  currentPlayer = name;
+  gameLoop();
 }
 
 function selectLevel(){
   //NYI
+  var level = prompt("What level would you like to play?");
+  currentLevel = level;
+  playerLives = 3;
+  gameLoop();
 }
 
 function endLevel(){
