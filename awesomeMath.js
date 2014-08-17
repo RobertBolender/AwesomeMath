@@ -72,6 +72,7 @@ function endLevel(){
   $('#stars').text("");
   if (playerStars){
     showingScores = 1;
+    $.ionSound.play("awesome_song");
     $('#scores').css({opacity:100});
     $('#scores').text("Congratulations, you got " + playerStars + ((playerStars > 1)? " stars!": " star!"));
     setTimeout(function(){
@@ -287,6 +288,7 @@ function showFooter(){
 function initSound(){
   $.ionSound({
     sounds: [
+    {name: "awesome_song"},
     {name: "cd_tray"},
     {name: "bell_ring"},
     {name: "glass"},
