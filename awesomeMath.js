@@ -9,7 +9,7 @@ $(document).ready(function(){
     $('#thediv').text("Previous score: " + score);
   }
 
-  $(document).on("keydown", function(){move();});
+  $(document).keydown(function(event){move(event);});
   $('#footer').mouseover(function(){showFooter()});
   $('#footer').click(function(){resetAll()});
 
