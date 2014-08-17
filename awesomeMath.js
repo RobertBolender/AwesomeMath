@@ -83,14 +83,14 @@ function endLevel(){
     }, 2000);
   } else {
     currentLevel = 0;
-    gameLoop();
+    setTimeout(function(){gameLoop();}, 500);
   }
 }
 
 function addLife(number){
   playerLives += number;
   if (playerLives <= 0){
-    endLevel();
+    setTimeout(function(){endLevel();}, 1000);
   }
   $('#lives').text(playerLives + " lives");
 }
@@ -149,7 +149,7 @@ function addStar(number){
       if (guess == factor1 * factor2){
         addPoints(10);
       } else {
-        $('#entry').text(factor1 * factor2);
+        $('#entry').text(factor1 * factor2).css({color:"red"});
         subtractPoints(20);
       }
       setTimeout(function(){gameLoop()}, 500);
@@ -198,7 +198,7 @@ function addStar(number){
         onemax = twomax = 5;
         onemin = twomin = 1;
     }
-    $('#entry, #thediv').text("");
+    $('#entry, #thediv').text("").css({color:"white"});
     $('#question').css({opacity:100});
     var one = Math.floor(Math.random() * onemax + onemin);
     $('#factor1').text(one);
