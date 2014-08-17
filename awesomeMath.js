@@ -129,11 +129,51 @@ function addLife(number){
 
   function newGuess(){
     if (!currentLevel){return;}
+    var onemax = onemin = twomax = twomin = 0;
+    switch (currentLevel){
+      case 1:
+        onemax = twomax = 5;
+        onemin = twomin = 1;
+        break;
+      case 2:
+        onemax = 5;
+        onemin = 6;
+        twomax = 5;
+        twomin = 1;
+        break;
+      case 3:
+        onemax = twomax = 5;
+        onemin = twomin = 6;
+        break;
+      case 4:
+        onemax = 5;
+        onemin = 11;
+        twomax = 5;
+        twomin = 1;
+        break;
+      case 5:
+        onemax = 5;
+        onemin = 11;
+        twomax = 5;
+        twomin = 6;
+        break;
+      case 6:
+        onemax = twomax = 5;
+        onemin = twomin = 11;
+        break;
+      case 7:
+        onemax = twomax = 15;
+        onemin = twomin = 1;
+        break;
+      default: //level 1
+        onemax = twomax = 5;
+        onemin = twomin = 1;
+    }
     $('#entry, #thediv').text("");
     $('#question').css({opacity:100});
-    var one = Math.floor(Math.random() * 10 + 1);
+    var one = Math.floor(Math.random() * onemax + onemin);
     $('#factor1').text(one);
-    var two = Math.floor(Math.random() * 10 + 1);
+    var two = Math.floor(Math.random() * twomax + twomin);
     $('#factor2').text(two);
   }
 
