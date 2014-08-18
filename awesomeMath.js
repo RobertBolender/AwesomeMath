@@ -73,7 +73,7 @@ function endLevel(){
   $('#stars').text("");
   if (playerStars){
     showingScores = 1;
-    if (playerStars > 0){
+    if (playerStars > 2){
       $.ionSound.play("awesome_song");
       $('#mute').css({opacity:100});
       setTimeout(function(){
