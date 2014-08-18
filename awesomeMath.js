@@ -12,9 +12,6 @@ $(document).ready(function(){
 
   lastPlayer = readCookie("lastPlayer") || "";
   highScores = readCookie("highScores") || "";
-  lastHead = readCookie("lastHead") || "";
-  if (lastHead == "lucy"){changeHead();}
-  console.log("last head: " + lastHead);
 
   $(document).keydown(function(event){move(event);});
   $('#footer').mouseover(function(){showFooter()});
@@ -25,6 +22,12 @@ $(document).ready(function(){
   // $('#progress').width("10%");
   initSound();
   gameLoop();
+});
+
+$(window).load(function(){
+  lastHead = readCookie("lastHead") || "";
+  if (lastHead == "lucy"){changeHead();}
+  console.log("last head: " + lastHead);
 });
 
 function gameLoop(){
@@ -319,7 +322,7 @@ function initSound(){
 function changeHead(){
   // var head = $('#head').css({"background-image":"url(images/emmethead.png)"});
   var head = $('#head').css("background-image");
-  // console.log("head: " + head);
+  console.log("head: " + head);
   if (head.match(/emmet/)){
     createCookie("lastHead", "lucy", 7);
     $('#head').css({"background-image":"url(images/lucyhead.png)"});
