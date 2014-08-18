@@ -2,12 +2,12 @@
   width:400px;
   height:20px;
   margin:auto;
-  /*position:absolute;*/
+  /*position:fixed;*/
   /*top:0;*/
   /*left:400px;*/
   border:3px solid #ccc;
   border-radius:20px;
-  opacity:0;
+  /*opacity:0;*/
 }
 
 #progress{
@@ -45,9 +45,10 @@
 }
 
 #question{
-  opacity:0;
+  /*opacity:0;*/
   position:absolute;
-  padding:110px 130px;
+  padding:110px 100px 110px 130px;
+  white-space: nowrap;
 }
 
 #factor1,
@@ -74,7 +75,7 @@
 
 #levels {
   position:relative;
-  opacity:0;
+  /*opacity:0;*/
   font-size:0.7em;
   text-align: center;
 }
@@ -94,7 +95,7 @@
 }
 
 #scores {
-  opacity:0;
+  /*opacity:0;*/
   position:absolute;
   top:0;
   padding:5px;
@@ -102,7 +103,7 @@
   /*background-color:black;*/
 }
 #mute {
-  opacity:0;
+  /*opacity:0;*/
   position:absolute;
   top:20px;
   right:20px;
@@ -127,4 +128,17 @@
   height:64px;
   width:64px;
   background-repeat: no-repeat;
+}
+
+#head{
+  background-image:url(images/emmethead.png);
+}
+#star{
+  background-image:url(images/star.png);
+}
+
+#start{
+  margin-top:2em;
+  text-align: center;
+  font-family: "Comic Sans MS";
 }

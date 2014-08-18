@@ -7,6 +7,8 @@ var highScores = "";
 var showingScores = 0;
 
 $(document).ready(function(){
+  $("#mute, #scores, #levels, #question, #awesomebar, #star, #stars").hide();
+
   lastPlayer = readCookie("lastPlayer") || "";
   highScores = readCookie("highScores") || "";
 
@@ -14,9 +16,9 @@ $(document).ready(function(){
   $(document).keydown(function(event){move(event);});
   $('#footer').mouseover(function(){showFooter()});
   $('#footer').click(function(){resetAll()});
-  $('#head').css({"background-image":"url(images/emmethead.png)"});
   $('#head').click(function(){changeHead()});
   $('#name').click(function(){signIn()});
+  $('#start').click(function(){$(this).remove();signIn();});
   // $('#progress').width("10%");
   initSound();
   gameLoop();
@@ -51,7 +53,7 @@ function signIn(){
 
 function selectLevel(){
   //NYF
-  $('#levels').css({opacity:100});
+  $('#levels').show();
   $('#levels div').click(function(){
     currentLevel = $(this).data("level");
     selectLevel()
@@ -60,7 +62,7 @@ function selectLevel(){
   // var level = prompt("What level would you like to play?", 1);
   // currentLevel = level || 1;
   if (currentLevel){
-    $('#levels').css({opacity:0});
+    $('#levels').hide();
     playerLives = 0;
     addLife(3);
     gameLoop();
@@ -69,24 +71,25 @@ function selectLevel(){
 
 function endLevel(){
   //NYF
-  $('#question').css({opacity:0});
+  $('#question').hide();
   // currentLevel = 0;
-  $('#stars').text("");
   if (playerStars){
     showingScores = 1;
     if (playerStars > 2){
       $.ionSound.play("awesome_song");
-      $('#mute').css({opacity:100});
+      $('#mute').show();
       setTimeout(function(){
         $('#scores').text($('#scores').text() + "\nTHAT'S AWESOME!");
       }, 1000);
     }
-    $('#scores').css({opacity:100});
+    $('#scores').show();
     $('#scores').text("Congratulations, you got " + playerStars + ((playerStars > 1)? " stars!": " star!"));
     setTimeout(function(){
-      $('#scores').css({opacity:0});
+      $('#scores').hide();
       currentLevel = 0;
       playerStars = 0;
+      $('#stars').text("");
+      $('#star, #stars').hide();
       showingScores = 0;
       gameLoop();
     }, 5000);
@@ -106,9 +109,9 @@ function addLife(number){
 
 function addStar(number){
   playerStars += number;
-  $('#star').css({"background-image":"url(images/star.png)"});
+  $('#star, #stars').show();
   $('#stars').text("x " + playerStars);
-  if (playerStars > 4){
+  if (playerStars > 4 && currentLevel < 7){
     endLevel();
   }
 }
@@ -211,8 +214,9 @@ function addStar(number){
         onemax = twomax = 5;
         onemin = twomin = 1;
     }
-    $('#entry, #thediv').text("").css({color:"white"});
-    $('#question').css({opacity:100});
+    $('#entry').text("").css({color:"white"});
+    $('#thediv').text("");
+    $('#question').show();
     var one = Math.floor(Math.random() * onemax + onemin);
     $('#factor1').text(one);
     var two = Math.floor(Math.random() * twomax + twomin);
@@ -220,7 +224,7 @@ function addStar(number){
   }
 
   function addPoints(points){
-    $('#awesomebar').css({opacity:100});
+    $('#awesomebar').show();
     var currentpoints = $('#progress').width() / $('#awesomebar').width() * 100;
 
     if (currentpoints + points < 100){
@@ -237,7 +241,7 @@ function addStar(number){
   }
 
   function subtractPoints(points){
-    $('#awesomebar').css({opacity:100});
+    $('#awesomebar').show();
     var currentpoints = $('#progress').width() / $('#awesomebar').width() * 100;
 
     if (currentpoints - points < 0){
@@ -293,7 +297,7 @@ function resetAll(){
 
 function showFooter(){
   console.log("mousing over!");
-  $('#footer').animate({opacity: 100}, 4000);
+  $('#footer').animate({opacity:100}, 4000);
 }
 
 function initSound(){
