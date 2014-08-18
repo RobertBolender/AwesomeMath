@@ -14,6 +14,7 @@ $(document).ready(function(){
   highScores = readCookie("highScores") || "";
   lastHead = readCookie("lastHead") || "";
   if (lastHead == "lucy"){changeHead();}
+  console.log("last head: " + lastHead);
 
   $(document).keydown(function(event){move(event);});
   $('#footer').mouseover(function(){showFooter()});
@@ -45,7 +46,7 @@ function gameLoop(){
 }
 
 function signIn(){
-  //NYF
+  $('#start').remove();
   var name = prompt("What is your name?", lastPlayer);
   currentPlayer = name || "Nameless";
   $('#name').text(currentPlayer);
@@ -54,15 +55,12 @@ function signIn(){
 }
 
 function selectLevel(){
-  //NYF
   $('#levels').show();
   $('#levels div').click(function(){
     currentLevel = $(this).data("level");
     selectLevel()
   });
-  // console.log("current level: " + currentLevel);
-  // var level = prompt("What level would you like to play?", 1);
-  // currentLevel = level || 1;
+
   if (currentLevel){
     $('#levels').hide();
     playerLives = 0;
@@ -72,9 +70,7 @@ function selectLevel(){
 }
 
 function endLevel(){
-  //NYF
   $('#question').hide();
-  // currentLevel = 0;
   if (playerStars){
     showingScores = 1;
     if (playerStars > 2){
