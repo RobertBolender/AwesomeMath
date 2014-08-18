@@ -114,3 +114,10 @@
   border:1px solid black;
   border-radius:15px;
 }
+
+#star,
+#head {
+  display:inline-block;
+  height:64px;
+  width:64px;
+}

@@ -14,7 +14,9 @@ $(document).ready(function(){
   $(document).keydown(function(event){move(event);});
   $('#footer').mouseover(function(){showFooter()});
   $('#footer').click(function(){resetAll()});
-
+  $('#head').css({"background-image":"url(images/emmethead.png)"});
+  $('#head').click(function(){changeHead()});
+  $('#player').click(function(){signIn()});
   // $('#progress').width("10%");
   initSound();
   gameLoop();
@@ -42,7 +44,6 @@ function signIn(){
   var name = prompt("What is your name?", lastPlayer);
   currentPlayer = name || "Nameless";
   $('#player').text(currentPlayer);
-  $('#player').click(signIn);
   createCookie("lastPlayer", currentPlayer, 7);
   gameLoop();
 }
@@ -99,12 +100,13 @@ function addLife(number){
   if (playerLives <= 2){
     setTimeout(function(){gameLoop();}, 1000);
   }
-  $('#lives').text(playerLives + " lives");
+  $('#lives').text("x " + playerLives);
 }
 
 function addStar(number){
   playerStars += number;
-  $('#stars').text(playerStars + " stars");
+  $('#star').css({"background-image":"url(images/star.png)"});
+  $('#stars').text("x " + playerStars);
 }
 
 //////////////////////////////
@@ -306,6 +308,17 @@ function initSound(){
   });
   $.ionSound.play("cd_tray");
   $('#mute').click(function(){$.ionSound.stop()});
+}
+
+function changeHead(){
+  // var head = $('#head').css({"background-image":"url(images/emmethead.png)"});
+  var head = $('#head').css("background-image");
+  // console.log("head: " + head);
+  if (head.match(/emmet/)){
+    $('#head').css({"background-image":"url(images/lucyhead.png)"});
+  } else {
+    $('#head').css({"background-image":"url(images/emmethead.png)"});
+  }
 }
 //////////////////////////////
 
