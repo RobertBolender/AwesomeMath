@@ -75,6 +75,9 @@ function endLevel(){
     if (playerStars > 0){
       $.ionSound.play("awesome_song");
       $('#mute').css({opacity:100});
+      setTimeout(function(){
+        $('#scores').text($('#scores').text() + "\nTHAT'S AWESOME!");
+      }, 1000);
     }
     $('#scores').css({opacity:100});
     $('#scores').text("Congratulations, you got " + playerStars + ((playerStars > 1)? " stars!": " star!"));
@@ -84,7 +87,7 @@ function endLevel(){
       playerStars = 0;
       showingScores = 0;
       gameLoop();
-    }, 2000);
+    }, 5000);
   } else {
     currentLevel = 0;
     setTimeout(function(){gameLoop();}, 500);
@@ -93,8 +96,8 @@ function endLevel(){
 
 function addLife(number){
   playerLives += number;
-  if (playerLives <= 0){
-    setTimeout(function(){endLevel();}, 1000);
+  if (playerLives <= 2){
+    setTimeout(function(){gameLoop();}, 1000);
   }
   $('#lives').text(playerLives + " lives");
 }
@@ -279,8 +282,7 @@ function addStar(number){
 
 function resetAll(){
   console.log("Resetting everything.");
-  createCookie("visits", 0, -1);
-  createCookie("score", 0, -1);
+  console.log("Full disclosure: doesn't actually do anything.")
 }
 
 function showFooter(){
