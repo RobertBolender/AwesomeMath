@@ -16,7 +16,7 @@ $(document).ready(function(){
   $('#footer').click(function(){resetAll()});
   $('#head').css({"background-image":"url(images/emmethead.png)"});
   $('#head').click(function(){changeHead()});
-  $('#player').click(function(){signIn()});
+  $('#name').click(function(){signIn()});
   // $('#progress').width("10%");
   initSound();
   gameLoop();
@@ -43,7 +43,7 @@ function signIn(){
   //NYF
   var name = prompt("What is your name?", lastPlayer);
   currentPlayer = name || "Nameless";
-  $('#player').text(currentPlayer);
+  $('#name').text(currentPlayer);
   createCookie("lastPlayer", currentPlayer, 7);
   gameLoop();
 }
