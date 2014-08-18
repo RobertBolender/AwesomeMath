@@ -26,7 +26,8 @@ function gameLoop(){
   if(showingScores){return;}
   if (!currentPlayer){
     console.log("No player");
-    return signIn();
+    return;
+    // return signIn();
   } else if (!currentLevel){
     console.log("No level");
     return selectLevel();
@@ -98,7 +99,7 @@ function endLevel(){
 function addLife(number){
   playerLives += number;
   if (playerLives <= 2){
-    setTimeout(function(){gameLoop();}, 1000);
+    // setTimeout(function(){gameLoop();}, 1000);
   }
   $('#lives').text("x " + playerLives);
 }
@@ -107,6 +108,9 @@ function addStar(number){
   playerStars += number;
   $('#star').css({"background-image":"url(images/star.png)"});
   $('#stars').text("x " + playerStars);
+  if (playerStars > 4){
+    endLevel();
+  }
 }
 
 //////////////////////////////
