@@ -3,6 +3,7 @@ var currentPlayer = "";
 var playerLives = 0;
 var playerStars = 0;
 var lastPlayer = "";
+var lastHead = "";
 var highScores = "";
 var showingScores = 0;
 
@@ -11,7 +12,8 @@ $(document).ready(function(){
 
   lastPlayer = readCookie("lastPlayer") || "";
   highScores = readCookie("highScores") || "";
-
+  lastHead = readCookie("lastHead") || "";
+  if (lastHead == "lucy"){changeHead();}
 
   $(document).keydown(function(event){move(event);});
   $('#footer').mouseover(function(){showFooter()});
@@ -323,8 +325,10 @@ function changeHead(){
   var head = $('#head').css("background-image");
   // console.log("head: " + head);
   if (head.match(/emmet/)){
+    createCookie("lastHead", "lucy", 7);
     $('#head').css({"background-image":"url(images/lucyhead.png)"});
   } else {
+    createCookie("lastHead", "emmet", 7);
     $('#head').css({"background-image":"url(images/emmethead.png)"});
   }
 }
