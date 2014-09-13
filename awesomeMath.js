@@ -6,6 +6,7 @@ var lastPlayer = "";
 var lastHead = "";
 var highScores = "";
 var showingScores = 0;
+var recentAnswers = [];
 
 $(document).ready(function(){
   $("#mute, #scores, #levels, #question, #awesomebar, #star, #stars").hide();
@@ -219,8 +220,11 @@ function addStar(number){
     $('#thediv').text("");
     $('#question').show();
     var one = Math.floor(Math.random() * onemax + onemin);
-    $('#factor1').text(one);
     var two = Math.floor(Math.random() * twomax + twomin);
+    recentAnswers.push(one * two);
+    console.log(recentAnswers);
+
+    $('#factor1').text(one);
     $('#factor2').text(two);
   }
 
