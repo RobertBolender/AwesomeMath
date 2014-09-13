@@ -222,6 +222,7 @@ function addStar(number){
     var one = Math.floor(Math.random() * onemax + onemin);
     var two = Math.floor(Math.random() * twomax + twomin);
     recentAnswers.push(one * two);
+    while (recentAnswers.length > 5){recentAnswers.shift();}
     console.log(recentAnswers);
 
     $('#factor1').text(one);
