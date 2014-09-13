@@ -221,7 +221,18 @@ function addStar(number){
     $('#question').show();
     var one = Math.floor(Math.random() * onemax + onemin);
     var two = Math.floor(Math.random() * twomax + twomin);
-    recentAnswers.push(one * two);
+
+    var newAnswer = one * two;
+    if (recentAnswers.length > 0){
+      for (var i=0; i<recentAnswers.length; i++){
+        if (recentAnswers[i] == newAnswer){
+          console.log("rejecting new answer " + newAnswer);
+          return newGuess();
+        }
+      }
+    }
+
+    recentAnswers.push(newAnswer);
     while (recentAnswers.length > 5){recentAnswers.shift();}
     console.log(recentAnswers);
 
